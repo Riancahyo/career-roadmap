@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 8px 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffaa40 0%, #9c40ff 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(32, 13, 66, 0.5);
+  transition: all 0.3s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffbb55 0%, #ad55ff 100%);
+  box-shadow: 0 0 15px rgba(156, 64, 255, 0.6);
+  border-color: rgba(156, 64, 255, 0.3);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #ff9933 0%, #8833ee 100%);
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #9c40ff rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar-custom {
+  scroll-behavior: smooth;
+}
+
+.scrollbar-canvas::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-canvas::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.scrollbar-canvas::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffaa40 0%, #9c40ff 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar-canvas::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffbb55 0%, #ad55ff 100%);
+}
