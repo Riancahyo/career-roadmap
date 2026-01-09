@@ -60,7 +60,7 @@ export default function ResultPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring' }}
-            className="inline-flex items-center gap-2 bg-[#ffaa40] px-4 sm:px-5 py-2 rounded-full mb-4 sm:mb-5"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] px-4 sm:px-5 py-2 rounded-full mb-4 sm:mb-5"
           >
             <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="font-semibold text-sm sm:text-base">Hasil Analisis</span>
@@ -92,7 +92,7 @@ export default function ResultPage() {
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-5 shadow-[inset_0_-8px_10px_#8fdfff1f]"
           >
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#ffaa40] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg flex items-center justify-center">
                 <Target className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold">Kenapa Cocok Untukmu?</h2>
@@ -120,7 +120,7 @@ export default function ResultPage() {
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-5 shadow-[inset_0_-8px_10px_#8fdfff1f]"
           >
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#ffaa40] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg flex items-center justify-center">
                 <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold">Skills yang Dibutuhkan</h2>
@@ -147,7 +147,7 @@ export default function ResultPage() {
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-5 shadow-[inset_0_-8px_10px_#8fdfff1f] md:col-span-2"
           >
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#ffaa40] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg flex items-center justify-center">
                 <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold">Roadmap Belajar</h2>
@@ -177,7 +177,7 @@ export default function ResultPage() {
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-5 shadow-[inset_0_-8px_10px_#8fdfff1f] md:col-span-2"
           >
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#ffaa40] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg flex items-center justify-center">
                 <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold">Sumber Belajar Rekomendasi</h2>
@@ -210,7 +210,7 @@ export default function ResultPage() {
               const path = getCareerPath(recommendation.careerPath);
               router.push(`/roadmap/${path}`);
             }}
-            className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-[#ffaa40] rounded-lg font-medium text-xs sm:text-sm"
+            className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium text-xs sm:text-sm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
