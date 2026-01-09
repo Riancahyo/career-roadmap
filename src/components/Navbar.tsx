@@ -19,16 +19,16 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="bg-black relative">
+    <div className="relative">
       <div className="px-4">
-        <div className="container bg-black">
-          <div className="py-4 flex items-center justify-between">
+        <div className="container">
+          <div className="py-4 sm:py-3 flex items-center justify-between">
             <div className="relative">
               <div className='absolute w-full top-2 bottom-0'></div>
               <Image 
                 src={LogoImage} 
                 alt="Logo" 
-                className="h-12 w-12 relative mt-1 object-contain"
+                className="h-12 w-12 sm:h-10 sm:w-10 relative mt-1 object-contain"
               />
             </div>
 
@@ -44,7 +44,7 @@ export const Navbar = () => {
               )}
             </button>
 
-            <nav className='text-white gap-6 items-center hidden sm:flex'>
+            <nav className='text-white gap-4 lg:gap-5 items-center hidden sm:flex text-sm'>
               <Link href="/" className='text-opacity-60 text-white hover:text-opacity-100 transition'>
                 Home
               </Link>
@@ -54,7 +54,7 @@ export const Navbar = () => {
               <Link href="/ai-chat" className='text-opacity-60 text-white hover:text-opacity-100 transition'>
                 AI Chat
               </Link>
-              <Link href="/roadmap" className='bg-white py-2 px-4 rounded-lg text-black hover:bg-white/90 transition'>
+              <Link href="/roadmap" className='bg-white py-1.5 px-3 sm:px-4 rounded-lg text-black hover:bg-white/90 transition'>
                 Roadmap
               </Link>
             </nav>

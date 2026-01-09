@@ -16,18 +16,18 @@ export const Hero = () => {
       <div className="container relative z-10 -translate-y-4 sm:-translate-y-6 lg:-translate-y-6">
         <div className="flex justify-center">
           <div className="inline-flex relative">
-            <h1 className='text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tighter text-center px-4 sm:px-0 leading-tight'>
+            <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter text-center px-4 sm:px-0 leading-tight'>
               Temukan Jalur <br/> Karir IT-mu
             </h1>
             <motion.div 
-              className='absolute right-[110%] top-[40%] hidden lg:inline'
+              className='absolute right-[120%] top-[40%] hidden lg:inline'
               drag
               dragSnapToOrigin
             >
               <Image src={CursorImage} alt="cursor" height={150} width={150} className='max-w-none' draggable="false"/>
             </motion.div>
             <motion.div 
-              className='absolute left-[110%] top-[10%] hidden lg:inline'
+              className='absolute left-[120%] top-[10%] hidden lg:inline'
               drag
               dragSnapToOrigin
             >
@@ -37,29 +37,29 @@ export const Hero = () => {
         </div>
         
         <div className="flex justify-center px-4 sm:px-0">
-          <p className='text-base sm:text-lg lg:text-xl text-center mt-6 sm:mt-8 max-w-2xl text-white/80 leading-relaxed'>
+          <p className='text-base sm:text-base lg:text-lg text-center mt-6 sm:mt-8 max-w-2xl text-white/80 leading-relaxed'>
             Bingung mau fokus ke Frontend, Backend, UI/UX, atau jalur IT lainnya? 
             Yuk temukan passion-mu dengan bantuan AI!
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10 sm:mt-12 px-4 sm:px-0">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-3 mt-10 sm:mt-10 px-4 sm:px-0">
           <motion.button 
             onClick={() => router.push('/quiz')}
-            className='flex items-center gap-2 bg-white text-black py-3 px-6 rounded-lg font-medium hover:bg-white/90 transition-colors w-full sm:w-auto justify-center'
+            className='flex items-center gap-2 bg-white text-black py-3 px-6 sm:py-2.5 sm:px-5 rounded-lg font-medium hover:bg-white/90 transition-colors w-full sm:w-auto justify-center text-base sm:text-sm'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Sparkles className="w-5 h-5" />
+            <Sparkles className="w-5 h-5 sm:w-4 sm:h-4" />
             Mulai Quiz
           </motion.button>
           <motion.button 
             onClick={() => router.push('/ai-chat')}
-            className='flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white py-3 px-6 rounded-lg font-medium hover:bg-white/20 transition-colors w-full sm:w-auto justify-center'
+            className='flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white py-3 px-6 sm:py-2.5 sm:px-5 rounded-lg font-medium hover:bg-white/20 transition-colors w-full sm:w-auto justify-center text-base sm:text-sm'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <MessageSquare className="w-5 h-5" />
+            <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
             Chat dengan AI
           </motion.button>
         </div>

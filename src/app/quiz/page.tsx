@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { QuizCard } from '@/components/QuizCard';
 import { quizQuestions } from '@/data/quizQuestions';
 import { QuizAnswer } from '@/types/career';
-import { ArrowLeft, ArrowRight, Sparkles, Menu as MenuIcon } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 
 export default function QuizPage() {
@@ -94,20 +94,20 @@ export default function QuizPage() {
     <div className="min-h-screen bg-black text-white bg-[linear-gradient(to_bottom,#000,#200D42_34%,#4F21A1_95%)] relative overflow-clip">
       <Navbar />
 
-      <div className="container relative z-10 px-4 py-12">
+      <div className="container relative z-10 px-4 py-6 sm:py-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
-            <Sparkles className="w-4 h-4 text-[#ffaa40]" />
-            <span className="text-sm">Career Path Finder</span>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 mb-3">
+            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ffaa40]" />
+            <span className="text-xs">Career Path Finder</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
             Temukan Jalur Karir IT-mu
           </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-xs sm:text-sm lg:text-base max-w-lg mx-auto">
             Jawab 10 pertanyaan untuk mendapatkan rekomendasi karir IT yang sesuai dengan minat dan bakatmu
           </p>
         </motion.div>
@@ -126,16 +126,16 @@ export default function QuizPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex justify-between items-center mt-8 max-w-3xl mx-auto"
+          className="flex justify-between items-center mt-5 sm:mt-6 max-w-3xl mx-auto"
         >
           <motion.button
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
-            className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/20 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/20 transition-colors text-xs sm:text-sm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Sebelumnya
           </motion.button>
 
@@ -143,25 +143,25 @@ export default function QuizPage() {
             <motion.button
               onClick={handleNext}
               disabled={!selectedAnswer}
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Selanjutnya
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </motion.button>
           ) : (
             <motion.button
               onClick={handleSubmit}
               disabled={!canSubmit || isSubmitting}
-              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {isSubmitting ? (
                 <>
                   <motion.div
-                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 border-2 border-white/30 border-t-white rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                   />
@@ -169,7 +169,7 @@ export default function QuizPage() {
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-5 h-5" />
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   Lihat Hasil
                 </>
               )}

@@ -117,14 +117,14 @@ export const RoadmapCanvas = ({ roadmap, userProgress, onUpdateProgress }: Roadm
 
   return (
     <>
-      <div className="mb-4 sm:mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="text-white font-bold text-base sm:text-lg">Progress</h3>
-          <span className="text-xl sm:text-2xl font-bold text-transparent bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] bg-clip-text">
+      <div className="mb-3 sm:mb-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="text-white font-bold text-sm sm:text-base">Progress</h3>
+          <span className="text-lg sm:text-xl font-bold text-transparent bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] bg-clip-text">
             {progress}%
           </span>
         </div>
-        <div className="h-2 sm:h-3 bg-white/10 rounded-full overflow-hidden">
+        <div className="h-1.5 sm:h-2 bg-white/10 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-gradient-to-r from-[#ffaa40] to-[#9c40ff]"
             initial={{ width: 0 }}
@@ -132,14 +132,14 @@ export const RoadmapCanvas = ({ roadmap, userProgress, onUpdateProgress }: Roadm
             transition={{ duration: 0.5 }}
           />
         </div>
-        <p className="text-white/60 text-xs sm:text-sm mt-2">
+        <p className="text-white/60 text-xs mt-1.5 sm:mt-2">
           {completedNodes.size} dari {roadmap.nodes.length} topik selesai
         </p>
       </div>
 
       <div 
         ref={canvasRef}
-        className="relative w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl sm:rounded-2xl overflow-auto"
+        className="relative w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg sm:rounded-xl overflow-auto"
         style={{ height: `${canvasHeight}px` }}
       >
         <div 
@@ -163,46 +163,46 @@ export const RoadmapCanvas = ({ roadmap, userProgress, onUpdateProgress }: Roadm
           </div>
         </div>
 
-        <div className="hidden sm:block absolute bottom-4 left-4 bg-black/80 backdrop-blur-md border border-white/20 rounded-xl p-4">
-          <h4 className="text-white font-bold text-sm mb-3">Legend</h4>
-          <div className="space-y-2">
+        <div className="hidden sm:block absolute bottom-3 left-3 bg-black/80 backdrop-blur-md border border-white/20 rounded-lg p-3">
+          <h4 className="text-white font-bold text-xs mb-2">Legend</h4>
+          <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gradient-to-br from-blue-500 to-cyan-500" />
+              <div className="w-3 h-3 rounded bg-gradient-to-br from-blue-500 to-cyan-500" />
               <span className="text-white/80 text-xs">Fundamentals</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-500 to-pink-500" />
+              <div className="w-3 h-3 rounded bg-gradient-to-br from-purple-500 to-pink-500" />
               <span className="text-white/80 text-xs">Core Skills</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gradient-to-br from-orange-500 to-red-500" />
+              <div className="w-3 h-3 rounded bg-gradient-to-br from-orange-500 to-red-500" />
               <span className="text-white/80 text-xs">Advanced</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gradient-to-br from-green-500 to-emerald-500" />
+              <div className="w-3 h-3 rounded bg-gradient-to-br from-green-500 to-emerald-500" />
               <span className="text-white/80 text-xs">Specialization</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="lg:hidden mt-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
-        <h4 className="text-white font-bold text-sm mb-3">Legend</h4>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-blue-500 to-cyan-500 flex-shrink-0" />
+      <div className="lg:hidden mt-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-3">
+        <h4 className="text-white font-bold text-xs mb-2">Legend</h4>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded bg-gradient-to-br from-blue-500 to-cyan-500 flex-shrink-0" />
             <span className="text-white/80 text-xs">Fundamentals</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0" />
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0" />
             <span className="text-white/80 text-xs">Core Skills</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-orange-500 to-red-500 flex-shrink-0" />
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded bg-gradient-to-br from-orange-500 to-red-500 flex-shrink-0" />
             <span className="text-white/80 text-xs">Advanced</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-green-500 to-emerald-500 flex-shrink-0" />
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded bg-gradient-to-br from-green-500 to-emerald-500 flex-shrink-0" />
             <span className="text-white/80 text-xs">Specialization</span>
           </div>
         </div>
@@ -222,28 +222,28 @@ export const RoadmapCanvas = ({ roadmap, userProgress, onUpdateProgress }: Roadm
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[85vh] overflow-y-auto"
+              className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-lg sm:rounded-xl p-5 sm:p-6 max-w-2xl w-full max-h-[85vh] overflow-y-auto"
             >
-              <div className="flex justify-between items-start mb-4 sm:mb-6">
+              <div className="flex justify-between items-start mb-4 sm:mb-5">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{selectedNode.title}</h2>
-                  <p className="text-white/60 text-sm sm:text-base">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-1.5 sm:mb-2">{selectedNode.title}</h2>
+                  <p className="text-white/60 text-xs sm:text-sm">
                     Estimasi: {selectedNode.estimatedWeeks} minggu
                   </p>
                 </div>
                 <button
                   onClick={() => setSelectedNode(null)}
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0"
+                  className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0"
                 >
-                  <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  <X className="w-5 h-5 text-white" />
                 </button>
               </div>
 
-              <p className="text-white/80 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{selectedNode.description}</p>
+              <p className="text-white/80 mb-4 leading-relaxed text-xs sm:text-sm">{selectedNode.description}</p>
 
               <motion.button
                 onClick={() => toggleNodeCompletion(selectedNode.id)}
-                className={`w-full py-3 px-6 rounded-lg font-medium flex items-center justify-center gap-2 mb-4 sm:mb-6 text-sm sm:text-base ${
+                className={`w-full py-2.5 sm:py-3 px-5 sm:px-6 rounded-lg font-medium flex items-center justify-center gap-2 mb-4 sm:mb-5 text-xs sm:text-sm ${
                   completedNodes.has(selectedNode.id)
                     ? 'bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white'
                     : 'bg-white/10 hover:bg-white/20 text-white'
@@ -251,52 +251,52 @@ export const RoadmapCanvas = ({ roadmap, userProgress, onUpdateProgress }: Roadm
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                <CheckCircle2 className="w-4 h-4" />
                 {completedNodes.has(selectedNode.id) ? 'Sudah Selesai ✓' : 'Tandai Selesai'}
               </motion.button>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">Learning Resources</h3>
-                <div className="space-y-2 sm:space-y-3">
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2.5 sm:mb-3">Learning Resources</h3>
+                <div className="space-y-2">
                   {selectedNode.resources.map((resource, index) => (
                     <motion.a
                       key={index}
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 sm:p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg sm:rounded-xl transition-colors group"
+                      className="flex items-center justify-between p-2.5 sm:p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors group"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex-1 mr-2">
-                        <h4 className="text-white font-medium mb-1 text-sm sm:text-base">{resource.title}</h4>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs px-2 py-0.5 sm:py-1 bg-white/10 rounded-full text-white/60">
+                        <h4 className="text-white font-medium mb-1 text-xs sm:text-sm">{resource.title}</h4>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-xs px-2 py-0.5 bg-white/10 rounded-full text-white/60">
                             {resource.type}
                           </span>
                           {resource.isFree && (
-                            <span className="text-xs px-2 py-0.5 sm:py-1 bg-green-500/20 text-green-400 rounded-full">
+                            <span className="text-xs px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full">
                               Free
                             </span>
                           )}
                         </div>
                       </div>
-                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-white/40 group-hover:text-white/80 transition-colors flex-shrink-0" />
+                      <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-white/80 transition-colors flex-shrink-0" />
                     </motion.a>
                   ))}
                 </div>
               </div>
 
               {selectedNode.prerequisites && selectedNode.prerequisites.length > 0 && (
-                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/10">
-                  <h3 className="text-white font-bold mb-3 text-sm sm:text-base">Prerequisites</h3>
-                  <div className="flex flex-wrap gap-2">
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <h3 className="text-white font-bold mb-2 text-xs sm:text-sm">Prerequisites</h3>
+                  <div className="flex flex-wrap gap-1.5">
                     {selectedNode.prerequisites.map((prereqId) => {
                       const prereqNode = roadmap.nodes.find((n) => n.id === prereqId);
                       return (
                         <span
                           key={prereqId}
-                          className="px-2 sm:px-3 py-1 bg-white/10 border border-white/20 rounded-full text-white/80 text-xs sm:text-sm"
+                          className="px-2 py-1 bg-white/10 border border-white/20 rounded-full text-white/80 text-xs"
                         >
                           {prereqNode?.title}
                         </span>

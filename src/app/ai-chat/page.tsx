@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChatInterface } from '@/components/ChatInterface';
 import { ChatMessage } from '@/types/career';
-import { Bot, Sparkles, Menu as MenuIcon } from 'lucide-react'; 
+import { Bot } from 'lucide-react'; 
 import { Navbar } from '@/components/Navbar';
 
 export default function AIChatPage() {
@@ -73,20 +73,20 @@ export default function AIChatPage() {
     <div className="min-h-screen bg-black text-white bg-[linear-gradient(to_bottom,#000,#200D42_34%,#4F21A1_95%)] relative overflow-clip">      
       <Navbar />
 
-      <div className="container relative z-10 px-4 py-10">
+      <div className="container relative z-10 px-4 py-4 sm:py-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
-            <Bot className="w-4 h-4 text-[#ffaa40]" />
-            <span className="text-sm">AI Career Advisor</span>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 mb-3">
+            <Bot className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ffaa40]" />
+            <span className="text-xs">AI Career Advisor</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
             Chat dengan AI Career Advisor
           </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-xs sm:text-sm lg:text-base max-w-lg mx-auto">
             Tanyakan apapun tentang karir IT, atau ceritakan minat dan kemampuanmu untuk mendapat saran yang personal
           </p>
         </motion.div>
@@ -107,10 +107,10 @@ export default function AIChatPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="max-w-4xl mx-auto mt-6"
+          className="max-w-4xl mx-auto mt-3 sm:mt-4"
         >
-          <p className="text-white/40 text-sm text-center mb-3">Contoh pertanyaan:</p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <p className="text-white/40 text-xs text-center mb-2">Contoh pertanyaan:</p>
+          <div className="flex flex-wrap gap-2 justify-center">
             {[
               'Apa bedanya Frontend dan Backend?',
               'Skill apa yang harus saya pelajari untuk jadi Data Scientist?',
@@ -119,7 +119,7 @@ export default function AIChatPage() {
               <motion.button
                 key={index}
                 onClick={() => handleSendMessage(suggestion)}
-                className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-sm hover:bg-white/10 transition-colors"
+                className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-xs hover:bg-white/10 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
