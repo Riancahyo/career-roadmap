@@ -6,7 +6,7 @@ import "./globals.css";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Roadmap Career",
+  title: "Career Roadmap",
   description: "Your Personalized Roadmap to a Successful Tech Career",
   icons: {
     icon: "/icon.png",
