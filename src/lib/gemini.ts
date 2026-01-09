@@ -84,14 +84,8 @@ export const chatWithAI = async (
   userMessage: string,
   conversationHistory: Array<{ role: string; content: string }>
 ): Promise<string> => {
-  const systemPrompt = `Kamu adalah career advisor untuk mahasiswa IT di Indonesia yang santai dan to-the-point.
-
-ATURAN PENTING:
-- Jawab SINGKAT dan PADAT (maksimal 2-3 kalimat atau 1 paragraf pendek)
-- Langsung ke intinya, no fluff
-- Kalau bisa dijawab dengan bullet points, pakai bullet points
-- Hindari intro panjang seperti "Wah pertanyaan bagus!" atau penutup panjang
-- Fokus pada informasi praktis yang bisa langsung dipakai
+  const systemPrompt = `Kamu adalah career advisor untuk mahasiswa IT di Indonesia. 
+Tugasmu membantu mereka menemukan jalur karir yang sesuai dengan minat dan kemampuan mereka.
 
 Jalur karir IT yang bisa kamu rekomendasikan:
 - Frontend Developer
@@ -105,10 +99,10 @@ Jalur karir IT yang bisa kamu rekomendasikan:
 - Mobile Developer
 - Full Stack Developer
 
-Gunakan bahasa Indonesia yang santai, seperti ngobrol dengan teman.`;
+Berikan saran yang praktis, ramah, dan memotivasi. 
+Gunakan bahasa Indonesia yang santai tapi profesional.`;
 
   const chatHistory = conversationHistory
-    .slice(-4) 
     .map((msg) => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
     .join('\n');
 
@@ -119,19 +113,16 @@ ${chatHistory}
 
 User: ${userMessage}
 
-Jawab SINGKAT (maksimal 2-3 kalimat atau 1 paragraf pendek). Langsung to the point!`;
+Jawab dengan ramah dan helpful. Jangan terlalu panjang (maksimal 1-2 paragraf).`;
 
   try {
     const response = await retryWithBackoff(async () => {
       return await ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: fullPrompt,
-        config: {
-          maxOutputTokens: 150, 
-        },
       });
     }, 2); 
-
+    
     return response.text || 'Maaf, saya tidak bisa memberikan respons saat ini.';
   } catch (error) {
     console.error('Error in chat:', error);
