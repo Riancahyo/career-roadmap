@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Share2, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { Roadmap, UserProgress } from '@/types/roadmap';
-import { shareRoadmap, shareToSocial } from '@/lib/shareExport';
+import { shareRoadmap } from '@/lib/shareExport';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -49,44 +49,44 @@ export const ShareModal = ({ isOpen, onClose, roadmap, progress }: ShareModalPro
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-2xl p-8 max-w-md w-full"
+            className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-2xl p-6 max-w-sm w-full"
           >
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Share Roadmap</h3>
-                <p className="text-white/60 text-sm">{roadmap.title}</p>
+                <h3 className="text-xl font-bold text-white mb-1">Share Roadmap</h3>
+                <p className="text-white/60 text-xs truncate">{roadmap.title}</p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-4 h-4 text-white" />
               </button>
             </div>
 
             <motion.button
               onClick={handleNativeShare}
-              className="w-full mb-4 py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center gap-3 transition-colors"
+              className="w-full mb-3 py-2.5 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center gap-3 transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Share2 className="w-5 h-5 text-white" />
-              <span className="text-white font-medium">Share via...</span>
+              <Share2 className="w-4 h-4 text-white" />
+              <span className="text-white text-sm font-medium">Share via...</span>
             </motion.button>
 
             <motion.button
               onClick={handleCopyLink}
-              className="w-full mb-6 py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center justify-between transition-colors"
+              className="w-full py-2.5 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center justify-between transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center gap-3">
                 {copied ? (
-                  <Check className="w-5 h-5 text-green-400" />
+                  <Check className="w-4 h-4 text-green-400" />
                 ) : (
-                  <Copy className="w-5 h-5 text-white" />
+                  <Copy className="w-4 h-4 text-white" />
                 )}
-                <span className="text-white font-medium">
+                <span className="text-white text-sm font-medium">
                   {copied ? 'Link Copied!' : 'Copy Link'}
                 </span>
               </div>

@@ -1,6 +1,9 @@
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import * as dotenv from 'dotenv';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+dotenv.config({ path: '.env.local' });
+
+const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
@@ -32,7 +35,7 @@ async function retryWithBackoff<T>(
 export const analyzeQuizAnswers = async (answers: string[]): Promise<string> => {
   const prompt = `
 Kamu adalah career advisor untuk mahasiswa IT yang sedang bingung memilih jalur karir.
-Berdasarkan jawaban quiz berikut:
+Berdasarkan jawaban quiz berikut (beberapa jawaban mungkin berisi multiple pilihan yang dipisah dengan ' | '):
 
 ${answers.map((answer, index) => `${index + 1}. ${answer}`).join('\n')}
 
@@ -64,16 +67,18 @@ Jawab HANYA dalam format JSON, tanpa penjelasan tambahan.
 
   try {
     const response = await retryWithBackoff(async () => {
-      return await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: {
+      const model = ai.getGenerativeModel({ 
+        model: 'gemini-2.5-flash-lite',
+        generationConfig: {
           responseMimeType: 'application/json',
-        },
+        }
       });
+      
+      const result = await model.generateContent(prompt);
+      return result.response;
     });
 
-    return response.text || '{}';
+    return response.text() || '{}';
   } catch (error) {
     console.error('Error analyzing quiz:', error);
     throw error;
@@ -119,15 +124,18 @@ Jawab dengan ramah dan helpful. Jangan terlalu panjang (maksimal 1-2 paragraf).`
 
   try {
     const response = await retryWithBackoff(async () => {
-      return await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: fullPrompt,
-      });
+      const model = ai.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
+      const result = await model.generateContent(fullPrompt);
+      return result.response;
     }, 2); 
     
-    return response.text || 'Maaf, saya tidak bisa memberikan respons saat ini.';
-  } catch (error) {
+    return response.text() || 'Maaf, saya tidak bisa memberikan respons saat ini.';
+  } catch (error: any) {
     console.error('Error in chat:', error);
+
+    if (error?.status === 429) {
+      throw new Error('Maaf, quota API sudah habis. Silakan coba lagi besok.');
+    }
     throw error;
   }
 };

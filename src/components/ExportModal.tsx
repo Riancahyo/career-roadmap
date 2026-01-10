@@ -42,73 +42,73 @@ export const ExportModal = ({ isOpen, onClose, roadmap, progress }: ExportModalP
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-2xl p-8 max-w-md w-full"
+            className="bg-gradient-to-br from-[#200D42] to-[#4F21A1] border border-white/20 rounded-2xl p-6 max-w-sm w-full"
           >
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Export Roadmap</h3>
-                <p className="text-white/60 text-sm">{roadmap.title}</p>
+                <h3 className="text-xl font-bold text-white mb-1">Export Roadmap</h3>
+                <p className="text-white/60 text-xs truncate">{roadmap.title}</p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-4 h-4 text-white" />
               </button>
             </div>
 
-            <p className="text-white/60 text-sm mb-6">
-              Choose a format to download your roadmap {progress ? 'with your progress' : ''}
+            <p className="text-white/60 text-xs mb-4">
+              Choose format {progress ? 'with progress' : ''}
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               <motion.button
                 onClick={() => handleExport('json')}
-                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-start gap-4 transition-colors text-left"
+                className="w-full p-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center gap-3 transition-colors text-left"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="p-3 bg-blue-500/20 rounded-lg">
-                  <FileJson className="w-6 h-6 text-blue-400" />
+                <div className="p-2 bg-blue-500/20 rounded-lg">
+                  <FileJson className="w-4 h-4 text-blue-400" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-bold mb-1">JSON Format</h4>
-                  <p className="text-white/60 text-sm">
-                    Machine-readable format. Best for importing to other tools.
+                  <h4 className="text-white font-semibold text-sm mb-0.5">JSON</h4>
+                  <p className="text-white/60 text-xs">
+                    For importing to other tools
                   </p>
                 </div>
               </motion.button>
 
               <motion.button
                 onClick={() => handleExport('markdown')}
-                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-start gap-4 transition-colors text-left"
+                className="w-full p-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center gap-3 transition-colors text-left"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="p-3 bg-purple-500/20 rounded-lg">
-                  <FileText className="w-6 h-6 text-purple-400" />
+                <div className="p-2 bg-purple-500/20 rounded-lg">
+                  <FileText className="w-4 h-4 text-purple-400" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-bold mb-1">Markdown Format</h4>
-                  <p className="text-white/60 text-sm">
-                    Human-readable checklist. Great for GitHub, Notion, or Obsidian.
+                  <h4 className="text-white font-semibold text-sm mb-0.5">Markdown</h4>
+                  <p className="text-white/60 text-xs">
+                    For GitHub, Notion, or Obsidian
                   </p>
                 </div>
               </motion.button>
 
               <motion.button
                 onClick={() => handleExport('pdf')}
-                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-start gap-4 transition-colors text-left"
+                className="w-full p-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center gap-3 transition-colors text-left"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="p-3 bg-red-500/20 rounded-lg">
-                  <FileDown className="w-6 h-6 text-red-400" />
+                <div className="p-2 bg-red-500/20 rounded-lg">
+                  <FileDown className="w-4 h-4 text-red-400" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-bold mb-1">PDF Format</h4>
-                  <p className="text-white/60 text-sm">
-                    Printable document. Perfect for offline reference or portfolio.
+                  <h4 className="text-white font-semibold text-sm mb-0.5">PDF</h4>
+                  <p className="text-white/60 text-xs">
+                    For offline reference or portfolio
                   </p>
                 </div>
               </motion.button>

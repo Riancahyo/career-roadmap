@@ -12,28 +12,40 @@ export default function QuizPage() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]); 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSelectAnswer = (answer: string) => {
-    setSelectedAnswer(answer);
+    setSelectedAnswers((prev) => {
+      if (prev.includes(answer)) {
+        return prev.filter((a) => a !== answer);
+      } else {
+        if (prev.length >= 3) {
+          return prev; 
+        }
+        return [...prev, answer];
+      }
+    });
   };
 
   const handleNext = () => {
-    if (!selectedAnswer) return;
+    if (selectedAnswers.length === 0) return;
 
     const newAnswers = [
       ...answers.filter((a) => a.questionId !== quizQuestions[currentQuestion].id),
       {
         questionId: quizQuestions[currentQuestion].id,
-        answer: selectedAnswer,
+        answer: selectedAnswers.join(' | '), 
       },
     ];
     setAnswers(newAnswers);
 
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      setSelectedAnswer(null);
+      const nextAnswer = answers.find(
+        (a) => a.questionId === quizQuestions[currentQuestion + 1].id
+      );
+      setSelectedAnswers(nextAnswer ? nextAnswer.answer.split(' | ') : []);
     }
   };
 
@@ -43,18 +55,18 @@ export default function QuizPage() {
       const previousAnswer = answers.find(
         (a) => a.questionId === quizQuestions[currentQuestion - 1].id
       );
-      setSelectedAnswer(previousAnswer?.answer || null);
+      setSelectedAnswers(previousAnswer ? previousAnswer.answer.split(' | ') : []);
     }
   };
 
   const handleSubmit = async () => {
-    if (!selectedAnswer) return;
+    if (selectedAnswers.length === 0) return;
     
     const finalAnswers = [
       ...answers.filter((a) => a.questionId !== quizQuestions[currentQuestion].id),
       {
         questionId: quizQuestions[currentQuestion].id,
-        answer: selectedAnswer,
+        answer: selectedAnswers.join(' | '),
       },
     ];
 
@@ -88,7 +100,7 @@ export default function QuizPage() {
   };
 
   const isLastQuestion = currentQuestion === quizQuestions.length - 1;
-  const canSubmit = selectedAnswer !== null;
+  const canSubmit = selectedAnswers.length > 0;
 
   return (
     <div className="min-h-screen bg-black text-white bg-[linear-gradient(to_bottom,#000,#200D42_34%,#4F21A1_95%)] relative overflow-clip">
@@ -118,8 +130,9 @@ export default function QuizPage() {
             question={quizQuestions[currentQuestion]}
             currentQuestion={currentQuestion + 1}
             totalQuestions={quizQuestions.length}
-            selectedAnswer={selectedAnswer}
+            selectedAnswers={selectedAnswers}
             onSelectAnswer={handleSelectAnswer}
+            maxSelections={3}
           />
         </AnimatePresence>
 
@@ -142,7 +155,7 @@ export default function QuizPage() {
           {!isLastQuestion ? (
             <motion.button
               onClick={handleNext}
-              disabled={!selectedAnswer}
+              disabled={selectedAnswers.length === 0}
               className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
