@@ -100,7 +100,9 @@ Jalur karir IT yang bisa kamu rekomendasikan:
 - Full Stack Developer
 
 Berikan saran yang praktis, ramah, dan memotivasi. 
-Gunakan bahasa Indonesia yang santai tapi profesional.`;
+Gunakan bahasa Indonesia yang santai tapi profesional.
+
+PENTING: Jangan gunakan markdown formatting seperti *, **, atau _ untuk bold/italic. Tulis teks biasa saja tanpa formatting khusus.`;
 
   const chatHistory = conversationHistory
     .map((msg) => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)

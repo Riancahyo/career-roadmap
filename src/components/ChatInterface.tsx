@@ -1,16 +1,18 @@
 "use client"
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User } from 'lucide-react';
+import { Send, Bot, User, RefreshCw } from 'lucide-react';
 import { ChatMessage } from '@/types/career';
 
 interface ChatInterfaceProps {
   messages: ChatMessage[];
   onSendMessage: (message: string) => void;
   isLoading: boolean;
+  onNewChat?: () => void;
+  showNewChatButton?: boolean;
 }
 
-export const ChatInterface = ({ messages, onSendMessage, isLoading }: ChatInterfaceProps) => {
+export const ChatInterface = ({ messages, onSendMessage, isLoading, onNewChat, showNewChatButton }: ChatInterfaceProps) => {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +34,7 @@ export const ChatInterface = ({ messages, onSendMessage, isLoading }: ChatInterf
 
   return (
     <div className="w-full max-w-4xl mx-auto h-[500px] flex flex-col bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-[inset_0_-6px_8px_#8fdfff1f]">
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-custom">
 
         <AnimatePresence>
           {messages.map((message, index) => (
@@ -117,6 +119,19 @@ export const ChatInterface = ({ messages, onSendMessage, isLoading }: ChatInterf
 
       <form onSubmit={handleSubmit} className="p-3 border-t border-white/20">
         <div className="flex gap-2">
+          {showNewChatButton && onNewChat && (
+            <motion.button
+              type="button"
+              onClick={onNewChat}
+              className="bg-white/10 hover:bg-white/20 border border-white/20 p-2.5 rounded-lg transition-colors group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              title="Chat Baru"
+            >
+              <RefreshCw className="w-4 h-4 text-white/60 group-hover:text-white group-hover:rotate-180 transition-all duration-300" />
+            </motion.button>
+          )}
+
           <input
             type="text"
             value={input}
@@ -125,6 +140,7 @@ export const ChatInterface = ({ messages, onSendMessage, isLoading }: ChatInterf
             className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm placeholder-white/40 focus:outline-none focus:border-[#9c40ff] transition-colors"
             disabled={isLoading}
           />
+
           <motion.button
             type="submit"
             disabled={!input.trim() || isLoading}
